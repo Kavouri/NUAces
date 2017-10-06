@@ -1,0 +1,17 @@
+Time: 1h
+Item: Sprint Review #1
+Who: Tighe Carroll, Alex Kavourias, Alek Piekarski, Austin McKenna, Joshua Michel, Sneha (TA)
+Notes:
+-Need to compile meeting minutes into Git using branching/merging to track participation history and avoid note duplication
+
+-Must track all future sprint tasks via Jira
+
+-All future meeting minutes must be on Git
+
+-Confluence doesn't even seem to have a purpose in this class. The TA's will want Git for everything.
+
+-For next meeting, will need UML, tech stack review, and a paper prototype with usability study results
+
+-Don't push to master, always branch and pull request. Pretend this is a real organization.
+
+-Usability study is pretty open ended w.r.t actor requirements, it would be beneficial to have actual students registered in CEP perform the study and suggest things. 
