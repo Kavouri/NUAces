@@ -1,0 +1,47 @@
+Time: 50m
+Item: Discuss System Requirements
+Who: Tighe Carroll, Alex Kavourias, Alek Piekarski, Austin McKenna, Joshua Michel, Hilary Sullivan
+Notes: 
+-We already have a detailed document of many requirements that are desired from the first client meeting, so I won't reiterate those here, the will be posted separately
+
+-One important requirement we learned is that they really want the data available as an excel sheet so they can tally up number of students served, number of hours served, perhaps with query by major or partner
+
+-It may be a good idea to build visual representation of this data right into the admin user interface to save them work, and also have the option to export the excel file
+
+-Most community partners probably don't want much involvement with the system or won't need much involvement, confirmed this with Squashbusters
+
+-An app is not necessary as long as a website can be easily used
+
+-It is important to have all of the data tracked - a spreadsheet would help significantly because it would enable the data to be charted and categorized.
+
+-Students should be able to opt-in to emails that notify them about upcoming volunteering
+
+-Partners don't need complex functionality because many of them aren't likely to want to be too involved
+
+-Administrators should have their own view as well
+
+-Agreed that a mobile-friendly web application is acceptable
+
+-Ironed out final details of project requirements, which are now included on a separate confluence page & in the project description document
+
+-opt-in email reminding students to check in to their service partner location
+
+-location-based check-in for students is a must
+
+-allow students to have multiple partners
+
+-admin view vs student view
+
+-able to generate 'reports' from data as an admin. (e.g. all students service in roxbury, total hours etc.)
+
+-need to create an export interface for when entire Community Outreach program at NEU migrates to Sale(Sail?)
+
+-need to create an import interface for existing legacy system (tracking via excel spreadsheets)
+
+-a site they looked at and liked: Noble Hour
+
+-must support all major browsers
+
+-need to know when data was recorded
+
+
