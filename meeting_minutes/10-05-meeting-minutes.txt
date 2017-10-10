@@ -15,3 +15,9 @@ Notes:
 -Don't push to master, always branch and pull request. Pretend this is a real organization.
 
 -Usability study is pretty open ended w.r.t actor requirements, it would be beneficial to have actual students registered in CEP perform the study and suggest things. 
+
+- UI can be pushed to end of sprint two
+
+- decided to add several items to our backlog
+
+- agreed upon a tech stack (MySQL, Express, React, Node)
