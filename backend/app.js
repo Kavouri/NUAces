@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mysql = require('mysql');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -38,5 +39,14 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
 });
+
+var connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'dev',
+  password: 'password',
+  database: 'testdb'
+});
+
+connection.connect()
 
 module.exports = app;
