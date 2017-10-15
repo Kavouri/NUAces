@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "lint": "./node_modules/.bin/eslint ./src/*.js",
+    "lint": "npm run pretty && ./node_modules/.bin/eslint ./src/*.js",
     "pretty": "./node_modules/.bin/prettier --write ./src/*.js",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "test": "react-scripts test --env=jsdom",
