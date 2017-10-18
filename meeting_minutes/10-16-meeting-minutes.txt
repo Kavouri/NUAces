@@ -20,3 +20,5 @@ Notes:
 - There will likely be reflection questsions asked of students after they
   complete a task. This was not mentioned in previous engagements, and is a new
   requirement update.
+- 3-5 admins at a time. Some will be students on coop.
+- Yearly upload of student data.
