@@ -1,0 +1,11 @@
+
+Time: 50m
+Item: Discuss System Requirements
+Who: Tighe Carroll, Alex Kavourias, Alek Piekarski, Austin McKenna, Joshua Michel
+Notes: 
+
+- allow student faculty (cep coop) to also have admin accounts
+- students dont have to check out perse
+- reports wont be generated regularly, only once in a while (at request of service partners)
+- service partners do not need to have access to this system at all
+
