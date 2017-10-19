@@ -4,17 +4,15 @@ Who: Tighe Carroll, Alex Kavourias, Alek Piekarski, Austin McKenna, Joshua Miche
 Notes:
 
 - allow student faculty (cep coop) to also have admin accounts
-- students dont have to check out perse
+- students don’t have to check out per se
 - reports wont be generated regularly, only once in a while (at request of service partners)
 - service partners do not need to have access to this system at all
-- Community partner involvement is not prioritized. I took this to mean that
-  community partners do not need to be integrated into the system, as their only
-  role is the verification of student involvement. This probably means we can
-  just email them verification links in the future.
-- Less concerned about the number of hours, and would prefer to see a task based
-  system. They want to measure engagement via number of tasks completed. They
-  don't want rote timesheets.
+- Community partner involvement is not prioritized. I took this to mean that community partners do not need to be integrated into the system, as their only role is the verification of student involvement. This probably means we can just email them verification links in the future.
+- Less concerned about the number of hours, and would prefer to see a task based system. They want to measure engagement via number of tasks completed. They don't want rote timesheets.
 - 'Civic Log' not 'Timesheet'
+- Administrators prefer that the system captures a snapshot of student engagement, once again, *not* a rote timesheet that lists hours and numbers.
+- There will likely be reflection questions asked of students after they complete a task. This was not mentioned in previous engagements, and is a new requirement update. In hindsight, I’m curious if these questions can be used to compile statistics.
+- Got the impression that this is more about the work the students do as opposed to the hours they put in. Quality over quantity. Really want this to be meaningful.
 - Administrators prefer that the system captures a snapshot of of student
   engagement, once again, *not* a rote timesheet that lists hours and numbers.
 - There will likely be reflection questsions asked of students after they
@@ -22,3 +20,4 @@ Notes:
   requirement update.
 - 3-5 admins at a time. Some will be students on coop.
 - Yearly upload of student data.
+
