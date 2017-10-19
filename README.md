@@ -15,3 +15,6 @@ section 1 team 6
 1) cd to the backend directory and npm install
 
 2) npm start will launch the backend, running on localhost:3001
+
+3) npm test will run backend tests
+      
