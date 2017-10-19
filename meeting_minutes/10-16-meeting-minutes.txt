@@ -13,3 +13,11 @@ Notes:
 - Administrators prefer that the system captures a snapshot of student engagement, once again, *not* a rote timesheet that lists hours and numbers.
 - There will likely be reflection questions asked of students after they complete a task. This was not mentioned in previous engagements, and is a new requirement update. In hindsight, I’m curious if these questions can be used to compile statistics.
 - Got the impression that this is more about the work the students do as opposed to the hours they put in. Quality over quantity. Really want this to be meaningful.
+- Administrators prefer that the system captures a snapshot of of student
+  engagement, once again, *not* a rote timesheet that lists hours and numbers.
+- There will likely be reflection questsions asked of students after they
+  complete a task. This was not mentioned in previous engagements, and is a new
+  requirement update.
+- 3-5 admins at a time. Some will be students on coop.
+- Yearly upload of student data.
+
