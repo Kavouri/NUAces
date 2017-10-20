@@ -1,0 +1,26 @@
+Time: 1h
+Item: Sprint Review #1
+Who: Tighe Carroll, Alex Kavourias, Alek Piekarski, Austin McKenna, Joshua Michel, Sneha (TA)
+Notes:
+-She seemed satisfied with progress on backend
+
+-Her concerns:
+	-no UML sequence diagram. Our group argued that our application did not need one, and she said "good enough"
+
+-She mentioned wanting tests first, and then implementation for next Sprint. The way she said it seems to imply this was direct instruction from Weintraub, so this will likely be instrumental to our grade for next sprint
+
+-We seemed to successfully argue our case that our group did not need a static UI due to our technology stack, and she said this was fine. She will likely try and take off points for this regardless, but we have a case against this.
+	-Our tech stack does not facilitate the creation of static HTML UI's. React abstracts away the DOM with an 	in-memory virtualization.
+	-Our lack of UI mocks, which was okayed from last sprint.
+
+-Next step (make sure this is flushed to Jira):
+	-Configure development environments for all (Vagrant?)
+	-work on front end 
+	-set up Jenkins
+	-integrate react-testing-utils (Jest)
+	-set up classes of data and schema
+	-implement mock UI's in React
+	-focus on data for next sprint
+	-prioritize database schema and endpoints/routing over UI
+	-she wanted progress in UI implementation
+	-usability study
