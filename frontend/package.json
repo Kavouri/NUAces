@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build-css && react-scripts build",
     "build-css": "node-sass-chokidar src/ -o src/",
     "lint": "npm run pretty && ./node_modules/.bin/eslint ./src/*.js",
     "pretty": "./node_modules/.bin/prettier --write ./src/*.js",
