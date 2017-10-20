@@ -13,6 +13,6 @@ describe('Blobs', function() {
       res.should.be.json;
       res.body.should.be.equal('hello there!');
     });
-    done()
+    done();
   });
 });
