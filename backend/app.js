@@ -12,18 +12,25 @@ var router = express.Router();
 var Strategy = require('passport-local').Strategy;
 var sha256 = require('sha256');
 var expressSession = require('express-session');
+var db = require('./db');
 
 //Routes
 var index = require('./routes/index');
 var users = require('./routes/users');
+var events = require('./routes/events');
+var partners = require('./routes/partners');
 
-// Database utilities
-var db = require('./db');
+// Passport config
+var auth = require('./routes/auth');
+var events = require('./routes/events');
 
 var app = express();
 // Linking routes to route handlers
 app.use('/', index);
 app.use('/users', users);
+app.use('/events', events);
+app.use('/login', auth);
+app.use('/partners', partners);
 
 passport.use(new Strategy(
   function(username, password, done) {
@@ -50,11 +57,33 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
+var app = express();
+// Linking routes to route handlers
+app.use('/', index);
+app.use('/users', users);
+app.use('/events', events);
+app.use('/auth', auth);
+app.use('/partners', partners);
+
+passport.use(new Strategy(
+  function(username, password, done) {
+    db.users.findByUsername(username, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (user.password != sha256(password + user.salt)) { 
+        console.log('failed to authenticate');
+        return done(null, false); 
+      }
+      return done(null, user);
+    });
+  }
+));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(expressSesssion('express-session')({ 
+app.use(expressSession({ 
   secret: 'TODO', 
   resave: false, 
   saveUnitialized: false 
