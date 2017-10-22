@@ -4,20 +4,25 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --exit"
+    "test": "mocha --recursive --exit"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
+    "crypto-random-string": "^1.0.0",
     "debug": "~2.6.9",
     "express": "~4.15.5",
+    "express-session": "^1.15.6",
     "morgan": "~1.9.0",
     "mysql": "^2.15.0",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "sha256": "^0.2.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   }
 }
