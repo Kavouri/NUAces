@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { LinkContainer, IndexLinkContainer } from 'react-router-bootstrap';
+import { Nav, NavItem } from 'react-bootstrap';
+import Home from './containers/HomePage';
+import Add from './containers/Add';
+import Profile from './containers/Profile';
 import './styles/App.css';
 
+
 class App extends Component {
+  componentWillMount() {
+  }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    return (<Router>
+      <div>
+        <Nav bsStyle="pills">
+          <IndexLinkContainer to="/">
+            <NavItem eventKey={1}> Home </NavItem>
+          </IndexLinkContainer>
+          <LinkContainer to="/add">
+            <NavItem eventKey={2}> Add </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/profile">
+            <NavItem eventKey={3}> My Profile </NavItem>
+          </LinkContainer>
+        </Nav>
+        <hr />
+        <Route exact path="/" component={Home} />
+        <Route path="/add" component={Add} />
+        <Route path="/profile" component={Profile} />
+      </div></Router>);
   }
 }
-
 export default App;
