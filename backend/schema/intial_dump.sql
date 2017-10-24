@@ -191,6 +191,8 @@ CREATE TABLE `users` (
   `age` int(10) NOT NULL,
   `email` varchar(512) NOT NULL,
   `password` varchar(256) NOT NULL,
+  `salt` varchar(10) NOT NULL,
+  `confirmed` bit NOT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

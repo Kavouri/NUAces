@@ -5,7 +5,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mysql = require('mysql');
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
@@ -20,17 +19,28 @@ var users = require('./routes/users');
 var events = require('./routes/events');
 var partners = require('./routes/partners');
 
-// Passport config
-var auth = require('./routes/auth');
-var events = require('./routes/events');
-
 var app = express();
+
+// Config must be defined before routes
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(expressSession({ 
+  secret: 'TODO', 
+  resave: false, 
+  saveUnitialized: false 
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Linking routes to route handlers
 app.use('/', index);
-app.use('/users', users);
-app.use('/events', events);
+app.use('/user', users);
+app.use('/event', events);
 app.use('/login', auth);
-app.use('/partners', partners);
+app.use('/partner', partners);
 
 passport.use(new Strategy(
   function(username, password, done) {
@@ -38,7 +48,6 @@ passport.use(new Strategy(
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
       if (user.password != sha256(password + user.salt)) { 
-        console.log('failed to authenticate');
         return done(null, false); 
       }
       return done(null, user);
@@ -56,41 +65,6 @@ passport.deserializeUser(function(id, cb) {
     cb(null, user);
   });
 });
-
-var app = express();
-// Linking routes to route handlers
-app.use('/', index);
-app.use('/users', users);
-app.use('/events', events);
-app.use('/auth', auth);
-app.use('/partners', partners);
-
-passport.use(new Strategy(
-  function(username, password, done) {
-    db.users.findByUsername(username, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      if (user.password != sha256(password + user.salt)) { 
-        console.log('failed to authenticate');
-        return done(null, false); 
-      }
-      return done(null, user);
-    });
-  }
-));
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(expressSession({ 
-  secret: 'TODO', 
-  resave: false, 
-  saveUnitialized: false 
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -107,13 +81,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'dev',
-  password: 'password',
-  database: 'testdb'
-});
-
-connection.connect()
+app.get('*', function(req, res) { res.send('Unimplemented Endpoint') });
 
 module.exports = app;
