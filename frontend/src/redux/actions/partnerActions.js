@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import { getPartners } from '../api/partnerApi';
 
+=======
+>>>>>>> b36afb98ca1ed5d3c3352ddb84f7e52df4539fc7
 export const REQUEST_PARTNERS = 'REQUEST_PARTNERS';
 export const RECEIVE_PARTNERS = 'RECEIVE_PARTNERS';
 
@@ -15,6 +18,7 @@ const receivePartners = (partners) => {
     type: RECEIVE_PARTNERS,
     isFetchingPartners: false,
     partners,
+<<<<<<< HEAD
     receivedAt: Date.now(),
   };
 };
@@ -29,3 +33,9 @@ const fetchPartners = () => {
 };
 
 export { fetchPartners };
+=======
+  };
+};
+
+export { receivePartners, requestPartners };
+>>>>>>> b36afb98ca1ed5d3c3352ddb84f7e52df4539fc7
