@@ -3,7 +3,7 @@ import HomePageView from '../views/HomePageView';
 
 const mapStateToProps = (state) => {
   return {
-    partners: state.partners,
+    partners: state.partners.partnerList,
   };
 };
 

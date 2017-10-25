@@ -1,3 +1,5 @@
+import { getPartners } from '../api/partnerApi';
+
 export const REQUEST_PARTNERS = 'REQUEST_PARTNERS';
 export const RECEIVE_PARTNERS = 'RECEIVE_PARTNERS';
 
@@ -13,7 +15,17 @@ const receivePartners = (partners) => {
     type: RECEIVE_PARTNERS,
     isFetchingPartners: false,
     partners,
+    receivedAt: Date.now(),
   };
 };
 
-export { receivePartners, requestPartners };
+const fetchPartners = () => {
+  return (dispatch) => {
+    dispatch(requestPartners());
+    return getPartners().then((partners) => {
+      dispatch(receivePartners(partners));
+    });
+  };
+};
+
+export { fetchPartners };

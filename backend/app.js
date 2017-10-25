@@ -26,20 +26,24 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(expressSession({ 
-  secret: 'TODO', 
-  resave: false, 
-  saveUnitialized: false 
+app.use(expressSession({
+  secret: 'TODO',
+  resave: false,
+  saveUnitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", '*');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requestedw-With, Content-Type, Accept");
+  next();
+})
 
 
 // Linking routes to route handlers
 app.use('/', index);
 app.use('/user', users);
 app.use('/event', events);
-app.use('/login', auth);
 app.use('/partner', partners);
 
 passport.use(new Strategy(
@@ -47,8 +51,8 @@ passport.use(new Strategy(
     db.users.findByUsername(username, function(err, user) {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
-      if (user.password != sha256(password + user.salt)) { 
-        return done(null, false); 
+      if (user.password != sha256(password + user.salt)) {
+        return done(null, false);
       }
       return done(null, user);
     });
@@ -82,5 +86,4 @@ app.use(function(err, req, res, next) {
 });
 
 app.get('*', function(req, res) { res.send('Unimplemented Endpoint') });
-
 module.exports = app;

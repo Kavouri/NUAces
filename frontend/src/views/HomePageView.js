@@ -1,12 +1,16 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const HomePageView = ({ partners }) => (
-  <ul>
-    {partners.map(partner => <li key={partner.id}>{partner.name}</li>)}
-  </ul>);
+const HomePageView = ({ partners }) => {
+  return partners ? partners.map(partner => <li key={partner.id}>{partner.name}</li>) : <div />;
+};
 
 HomePageView.propTypes = {
-  partners: React.PropTypes.arrayOf(PropTypes.object).isRequired,
+  partners: PropTypes.arrayOf(PropTypes.object),
+};
+
+HomePageView.defaultProps = {
+  partners: [],
 };
 
 export default HomePageView;

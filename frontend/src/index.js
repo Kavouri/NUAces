@@ -9,8 +9,11 @@ import reducers from './redux/reducers/reducers';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import { fetchPartners } from './redux/actions/partnerActions';
 
 const store = createStore(reducers, applyMiddleware(thunk));
+
+store.dispatch(fetchPartners());
 
 ReactDOM.render(
   <Provider store={store}>

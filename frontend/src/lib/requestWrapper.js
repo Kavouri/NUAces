@@ -6,5 +6,5 @@ export default function (url, method, data = {}) {
     json: true,
     data,
   };
-  return rp[method](options).then(res => res).catch(err => console.log(err));
+  return rp[method](options);
 }

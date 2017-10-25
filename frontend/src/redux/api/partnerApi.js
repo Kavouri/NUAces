@@ -1,6 +1,6 @@
 import requestWrapper from '../../lib/requestWrapper';
 
-const getPartners = () => requestWrapper('http://getpartnersendpoint');
+const getPartners = () => requestWrapper('http://localhost:3001/partner', 'get');
 
 const addPartner = data => requestWrapper('http://addpartnersendpoint', data);
 

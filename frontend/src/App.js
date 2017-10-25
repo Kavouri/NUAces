@@ -9,8 +9,6 @@ import './styles/App.css';
 
 
 class App extends Component {
-  componentWillMount() {
-  }
 
   render() {
     return (<Router>
