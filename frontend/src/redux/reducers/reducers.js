@@ -5,19 +5,15 @@ import { REQUEST_PARTNERS, RECEIVE_PARTNERS } from '../actions/partnerActions';
 
 // Reducer for adding partners.
 // We still need to add the async post.
-function partners(state = { isFetchingPartners: false, partnerList: [], receivedAt: '' }, action) {
+export function partners(state = { isFetchingPartners: false, partnerList: [], receivedAt: '' }, action) {
   switch (action.type) {
     case REQUEST_PARTNERS:
-      console.log('request partners');
-      return {
-        isFetchingPartners: true,
-      };
+      return Object.assign({}, state, { isFetchingPartners: true });
     case RECEIVE_PARTNERS:
-      console.log('receibve partners');
       return {
         isFetchingPartners: false,
         partnerList: action.partners,
-        receivedAt: action.receivedAt,
+        receivedAt: action.receivedAt
       };
     default:
       return state;
@@ -26,7 +22,7 @@ function partners(state = { isFetchingPartners: false, partnerList: [], received
 
 // Reducer for adding and registering for events. We will need to
 // add async posts to the backend as well.
-function events(state = {}, action) {
+export function events(state = {}, action) {
   switch (action.type) {
     case ADD_EVENT:
       return {

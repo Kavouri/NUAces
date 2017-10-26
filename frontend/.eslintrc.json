@@ -2,7 +2,9 @@
     "extends": "airbnb",
     "rules": {
       "react/jsx-filename-extension": "off",
-      "no-console": "off"
+      "no-console": "off",
+      "arrow-body-style": "off",
+      "comma-dangle": "off"
     },
     "env": {
         "node": true,

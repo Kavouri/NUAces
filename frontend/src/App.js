@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { LinkContainer, IndexLinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem } from 'react-bootstrap';
-import Home from './containers/HomePage';
+import HomePage from './containers/HomePage';
 import Add from './containers/Add';
 import Profile from './containers/Profile';
 import './styles/App.css';
 
-
-class App extends Component {
-
-  render() {
-    return (<Router>
+const App = () => {
+  return (
+    <Router>
       <div>
         <Nav bsStyle="pills">
           <IndexLinkContainer to="/">
@@ -25,10 +23,11 @@ class App extends Component {
           </LinkContainer>
         </Nav>
         <hr />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={HomePage} />
         <Route path="/add" component={Add} />
         <Route path="/profile" component={Profile} />
-      </div></Router>);
-  }
-}
+      </div>
+    </Router>
+  );
+};
 export default App;

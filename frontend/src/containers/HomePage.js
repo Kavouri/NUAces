@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import HomePageView from '../views/HomePageView';
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     partners: state.partners.partnerList,
   };

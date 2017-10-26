@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePageView matches a snapshot if partners are not present 1`] = `null`;
+
+exports[`HomePageView matches a snapshot if partners are present 1`] = `
+Array [
+  <li>
+    partner1
+</li>,
+  <li>
+    partner2
+</li>,
+]
+`;
