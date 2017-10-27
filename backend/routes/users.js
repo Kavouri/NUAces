@@ -13,7 +13,6 @@ router.post('/', function(req, res) {
   var user = new User(body.name, body.age, body.email, body.password);
   user.create().then(function(f) { 
     res.json({
-       ...f, 
       'user': user,
       'password': undefined
     }); 

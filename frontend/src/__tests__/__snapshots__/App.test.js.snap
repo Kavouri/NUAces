@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches a snapshot 1`] = `
+<div>
+  <ul
+    className="nav nav-pills"
+    role={null}
+  >
+    <li
+      className="active"
+      role="presentation"
+      style={Object {}}
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+      >
+         Home 
+      </a>
+    </li>
+    <li
+      className=""
+      role="presentation"
+      style={undefined}
+    >
+      <a
+        href="/add"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+      >
+         Add 
+      </a>
+    </li>
+    <li
+      className=""
+      role="presentation"
+      style={undefined}
+    >
+      <a
+        href="/profile"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+      >
+         My Profile 
+      </a>
+    </li>
+  </ul>
+  <hr />
+  <li>
+    partner1
+  </li>
+  <li>
+    partner2
+  </li>
+</div>
+`;
