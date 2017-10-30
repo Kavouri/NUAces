@@ -1,0 +1,8 @@
+group meeting 10/25/2017
+members: All group members
+
+- jenkins works! (kind of)
+- npm install is failing
+- everyone agreed to work on a particular feature
+- frontend work is a priority as of right now
+- any additional backend features are just a luxury right now, there is tech debt on the frontend
