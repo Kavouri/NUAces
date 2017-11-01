@@ -4,9 +4,9 @@ var sha256 = require('sha256');
 
 class User {
 
-  constructor(email, password, name, age, salt, id) {
+  constructor(email, password, name, birthday, salt, id) {
     this.name = name;
-    this.age = age;
+    this.birthday = birthday;
     this.email = email;
     this.password = password;
     this.salt = salt;
@@ -44,10 +44,11 @@ class User {
   getInsertQuery() {
     var salt = this.salt || utils.generateSalt();
     var hashedPassword = utils.hashPassword(this.password, salt);
+    console.log(this.birthday);
     var insertQuery = `INSERT INTO users 
-      (name, email, age, password, salt, confirmed) 
-      VALUES ('${this.name}', '${this.email}', ${this.age}, 
-              '${hashedPassword}', '${salt}', ${0})`;
+      (name, email, birthday, password, salt, isAdmin, confirmed) 
+      VALUES ('${this.name}', '${this.email}', '${this.birthday}', 
+              '${hashedPassword}', '${salt}', ${0}, ${0})`;
     return insertQuery;
   }
 
@@ -70,7 +71,8 @@ class User {
   }
 
   validateFields() {
-    var validFields = this.name && this.name.length < 256 && this.age > 0;
+    // TODO validate birthday
+    var validFields = this.name && this.name.length < 256 ;
     var validEmail = utils.validateEmail(this.email); 
     var passwordValid =  utils.validatePassword(this.password);
     if (!(validFields && validEmail && passwordValid)) {
@@ -99,7 +101,7 @@ class User {
 function toUser(rows) {
   var user = rows[0];
   user = new User(user.email, user.password, user.name, 
-      user.age, user.salt, user.userId);
+      user.birthday, user.salt, user.userId);
   return user;
 }
 
