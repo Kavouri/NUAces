@@ -163,11 +163,11 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `userId` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
-  `age` int(10) NOT NULL,
+  `birthday` date NOT NULL,
   `email` varchar(512) NOT NULL,
-  `accoutType` varchar(10) NOT NULL,
   `password` varchar(256) NOT NULL,
   `salt` varchar(10) NOT NULL,
+  `isAdmin` bit NOT NULL,
   `confirmed` bit NOT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
