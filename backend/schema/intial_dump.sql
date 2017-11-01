@@ -15,31 +15,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `admins`
---
-
-DROP TABLE IF EXISTS `admins`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `admins` (
-  `userId` int(10) DEFAULT NULL,
-  `title` varchar(512) DEFAULT NULL,
-  UNIQUE KEY `admins_userId_uindex` (`userId`),
-  CONSTRAINT `admins_users_userId_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `admins`
---
-
-LOCK TABLES `admins` WRITE;
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `attendance`
 --
 
@@ -190,6 +165,7 @@ CREATE TABLE `users` (
   `name` varchar(256) NOT NULL,
   `age` int(10) NOT NULL,
   `email` varchar(512) NOT NULL,
+  `accoutType` varchar(10) NOT NULL,
   `password` varchar(256) NOT NULL,
   `salt` varchar(10) NOT NULL,
   `confirmed` bit NOT NULL,

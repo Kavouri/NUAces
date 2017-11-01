@@ -18,6 +18,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var events = require('./routes/events');
 var partners = require('./routes/partners');
+var auth = require('./routes/auth');
 
 var app = express();
 
@@ -45,22 +46,20 @@ app.use('/', index);
 app.use('/user', users);
 app.use('/event', events);
 app.use('/partner', partners);
+app.use('/auth', auth);
 
 passport.use(new Strategy(
-  function(username, password, done) {
-    db.users.findByUsername(username, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      if (user.password != sha256(password + user.salt)) {
-        return done(null, false);
-      }
-      return done(null, user);
-    });
-  }
+  { usernameField: 'email' },
+  function(email, password, done) {
+    var user = new db.users.User(email, password);
+      return user.verifyPassword()
+        .then((user) => done(null, user))
+        .catch((err) => done(err.message));
+    }
 ));
 
 passport.serializeUser(function(user, cb) {
-  cb(null, user.id);
+  cb(null, user);
 });
 
 passport.deserializeUser(function(id, cb) {
@@ -69,6 +68,7 @@ passport.deserializeUser(function(id, cb) {
     cb(null, user);
   });
 });
+//
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -80,9 +80,9 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
   res.status(err.status || 500);
+  res.send(res.locals.error);
 });
 
 app.get('*', function(req, res) { res.send('Unimplemented Endpoint') });

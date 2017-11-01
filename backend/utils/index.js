@@ -7,6 +7,7 @@ exports.validatePassword = function(password) {
 }
 
 exports.validateEmail = function(email) {
+  if (!email) return false;
   return email.endsWith('@husky.neu.edu') || email.endsWith('@neu.edu');
 }
 
