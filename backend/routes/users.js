@@ -6,7 +6,7 @@ var Student = require('../db').students.Student;
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-  
+
 });
 
 router.post('/', function(req, res) {
@@ -17,8 +17,7 @@ router.post('/', function(req, res) {
     .then(student.create)
     .then(student.toPublicResponse)
     .then(res.json.bind(res))
-    .catch(err => { console.log(err); res.status(400).send(err.message) }); 
+    .catch(err => { res.status(400).send(err.message) }); 
 });
-
 
 module.exports = router;

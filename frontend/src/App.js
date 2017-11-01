@@ -5,12 +5,13 @@ import { Nav, NavItem } from 'react-bootstrap';
 import HomePage from './containers/HomePage';
 import Add from './containers/Add';
 import Profile from './containers/Profile';
+import Register from './containers/Register';
 import './styles/App.css';
 
 const App = () => {
   return (
     <Router>
-      <div>
+      <div className="root">
         <Nav bsStyle="pills">
           <IndexLinkContainer to="/">
             <NavItem eventKey={1}> Home </NavItem>
@@ -26,6 +27,7 @@ const App = () => {
         <Route exact path="/" component={HomePage} />
         <Route path="/add" component={Add} />
         <Route path="/profile" component={Profile} />
+        <Route path="/registration" component={Register} />
       </div>
     </Router>
   );
