@@ -1,4 +1,6 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
+import _ from 'lodash';
 
 const MONTHS = {
     January: "01",
@@ -14,16 +16,22 @@ const MONTHS = {
     November: "11",
     December: "12"
 };
-  
-const Birthday = (props) => (
-<div class="birthday-container inner-registration">
+const Birthday = props => (
+  <div className="birthday-container inner-registration">
     <select name="month" value={props.month} onChange={props.handleChange}>
-        {Object.keys(MONTHS).map(function(key, index) {
-            return <option select={key}>{key}</option>})}
+      {_.map(MONTHS, (value, key) =>
+        <option key={key} select={key}>{key}</option>)}
     </select>
-    <input placeholder="Day" name="day" size="8" value={props.day} onChange={props.handleChange}/>
-    <input placeholder="Year" name="year" size="16" value={props.year} onChange={props.handleChange}/>
-</div>
+    <input placeholder="Day" name="day" size="8" value={props.day} onChange={props.handleChange} />
+    <input placeholder="Year" name="year" size="16" value={props.year} onChange={props.handleChange} />
+  </div>
 );
+
+Birthday.propTypes = {
+  month: PropTypes.string.isRequired,
+  day: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired
+};
 
 export {Birthday, MONTHS};

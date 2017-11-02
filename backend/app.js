@@ -46,7 +46,7 @@ app.use('/', index);
 app.use('/user', users);
 app.use('/event', events);
 app.use('/partner', partners);
-app.use('/auth', auth);
+app.use('/login', auth);
 
 passport.use(new Strategy(
   { usernameField: 'email' },

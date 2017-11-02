@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { combineReducers } from 'redux';
-import { ADD_EVENT, REGISTER_FOR_EVENT } from '../actions/actions';
+import { SUCCESSFUL_LOGIN, ADD_EVENT, REGISTER_FOR_EVENT } from '../actions/actions';
 import { REQUEST_PARTNERS, RECEIVE_PARTNERS } from '../actions/partnerActions';
 
 // Reducer for adding partners.
@@ -39,7 +39,21 @@ export function events(state = {}, action) {
     default:
       return state;
   }
-}
+};
+
+export function login(state = {}, action) {
+  switch (action.type) {
+    case SUCCESSFUL_LOGIN:
+      console.log('here');
+      console.log(action.user);
+      return {
+        ...state,
+        user: action.user
+      };
+    default:
+      return state;
+  }
+};
 
 const reducers = combineReducers({ partners, events });
 

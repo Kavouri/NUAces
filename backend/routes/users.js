@@ -11,7 +11,6 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   var body = req.body;
-  console.log(req.body);
   var user = new User(body.email, body.password, body.name, body.dob);
   var student = new Student(user, body.address, body.school);
   user.create()

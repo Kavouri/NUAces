@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', passport.authenticate('local'),
   function(req, res, next) {
-    res.send('good!');
+    res.send(req.user.toPublicResponse());
   }
 );
 
