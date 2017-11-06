@@ -75,7 +75,7 @@ export default class Register extends React.Component {
       };
 
       const options = {
-        url: 'http://localhost:3001/user',
+        url: process.env.BASE_URL + '/user',
         form: registrationForm
       };
 

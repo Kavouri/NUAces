@@ -52,7 +52,7 @@ class Login extends React.Component {
       };
 
       const options = {
-        url: 'http://localhost:3001/login',
+        url: process.env.BASE_URL + '/login',
         form: loginForm
       };
 
