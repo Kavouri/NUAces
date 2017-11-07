@@ -1,8 +1,8 @@
 import requestWrapper from '../../lib/requestWrapper';
 
-const getPartners = () => requestWrapper(process.env.BASE_URL + '/partner', 'get');
+const getPartners = () => requestWrapper('/partner', 'get');
 
-const addPartner = data => requestWrapper('http://addpartnersendpoint', data);
+const addPartner = data => requestWrapper('/partner', 'post', data);
 
 const partnerApi = { addPartner, getPartners };
 
