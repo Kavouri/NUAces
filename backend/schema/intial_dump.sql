@@ -53,17 +53,16 @@ DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `eventId` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
-  `description` int(10) DEFAULT NULL,
+  `description` varchar(256) DEFAULT NULL,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
-  `recurring` tinyint(1) NOT NULL,
-  `column_7` int(11) DEFAULT NULL,
+  `recurring` bit(1) NOT NULL,
   `partnerId` int(10) DEFAULT NULL,
   `createdBy` int(10) DEFAULT NULL,
   PRIMARY KEY (`eventId`),
   KEY `events_servicepartners_partnerId_fk` (`partnerId`),
   KEY `events_users_userId_fk` (`createdBy`),
-  CONSTRAINT `events_servicepartners_partnerId_fk` FOREIGN KEY (`partnerId`) REFERENCES `service_partners` (`partnerId`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `events_servicepartners_partnerId_fk` FOREIGN KEY (`partnerId`) REFERENCES `partners` (`partnerId`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `events_users_userId_fk` FOREIGN KEY (`createdBy`) REFERENCES `users` (`userId`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -78,28 +77,31 @@ LOCK TABLES `events` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `service_partners`
+-- Table structure for table `partners`
 --
 
-DROP TABLE IF EXISTS `service_partners`;
+DROP TABLE IF EXISTS `partners`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `service_partners` (
+CREATE TABLE `partners` (
   `partnerId` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(1024) NOT NULL,
+  `description` varchar(1024) NOT NULL,
   `address` varchar(1024) NOT NULL,
   `addedBy` int(10) NOT NULL,
-  PRIMARY KEY (`partnerId`)
+  PRIMARY KEY (`partnerId`),
+  KEY `partners_addedBy_fk` (`addedBy`),
+  CONSTRAINT `partners_addedBy_fk` FOREIGN KEY (`addedBy`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `service_partners`
+-- Dumping data for table `partners`
 --
 
-LOCK TABLES `service_partners` WRITE;
-/*!40000 ALTER TABLE `service_partners` DISABLE KEYS */;
-/*!40000 ALTER TABLE `service_partners` ENABLE KEYS */;
+LOCK TABLES `partners` WRITE;
+/*!40000 ALTER TABLE `partners` DISABLE KEYS */;
+/*!40000 ALTER TABLE `partners` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -114,7 +116,7 @@ CREATE TABLE `student_partners` (
   `partnerId` int(10) NOT NULL,
   PRIMARY KEY (`userId`,`partnerId`),
   KEY `student_partners_servicepartners_partnerId_fk` (`partnerId`),
-  CONSTRAINT `student_partners_servicepartners_partnerId_fk` FOREIGN KEY (`partnerId`) REFERENCES `service_partners` (`partnerId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `student_partners_servicepartners_partnerId_fk` FOREIGN KEY (`partnerId`) REFERENCES `partners` (`partnerId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `student_partners_students_userId_fk` FOREIGN KEY (`userId`) REFERENCES `students` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
