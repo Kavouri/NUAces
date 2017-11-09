@@ -6,7 +6,11 @@ var Student = require('../db').students.Student;
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-
+  if (req.user) {
+    res.json(req.user.toPublicResponse());
+  } else {
+    res.status(401).json("not logged in");
+  }
 });
 
 router.post('/', function(req, res) {

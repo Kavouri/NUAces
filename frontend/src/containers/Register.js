@@ -1,5 +1,5 @@
 import React from 'react';
-import request from 'request-promise';
+import request from '../lib/requestWrapper';
 import _ from 'lodash';
 
 import Name from './registration/Name';
@@ -74,18 +74,16 @@ export default class Register extends React.Component {
         password: this.state.password
       };
 
-      const options = {
-        url: 'http://localhost:3001/user',
-        form: registrationForm
-      };
-
-      request.post(options)
+      request('/user', 'POST', registrationForm)
         .then((res) => {
-          //TODO
-          console.log(res);
+          if (res.status == 200) {
+            this.props.history.push('/');
+          } else {
+            this.setState({ error: res.body });
+          }
         })
-        .error((err) => {
-          console.log(err);
+        .catch((error) => {
+          this.setState({ error: error.error });
         });
     }
   }

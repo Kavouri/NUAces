@@ -54,7 +54,7 @@ passport.use(new Strategy(
     var user = new db.users.User(email, password);
       return user.verifyPassword()
         .then((user) => done(null, user))
-        .catch((err) => done(err.message));
+        .catch((err) => done(null, false));
     }
 ));
 
@@ -68,7 +68,7 @@ passport.deserializeUser(function(id, cb) {
     cb(null, user);
   });
 });
-//
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
