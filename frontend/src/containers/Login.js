@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import request from '../lib/requestWrapper';
 import { successfulLogin } from '../redux/actions/actions';
 import Error from './registration/Error';
+import Register from './Register';
 
-class Login extends React.Component {
+class UnwrappedLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,7 +59,7 @@ class Login extends React.Component {
       console.log(request);
       request('/login', 'POST', loginForm)
         .then((res) => {
-          if (res.status == 200) {
+          if (res.status === 200) {
             this.props.successfulLogin(res);
             this.props.history.push('/');
           }
@@ -99,7 +100,7 @@ class Login extends React.Component {
               </div>
               <div className="row Form-Margin">
                   <div className="col-xs-6 col-xs-offset-3">
-                      <button className="btn btn-block btn-primary" 
+                      <button className="btn btn-block btn-primary"
                         type="submit" onClick={this.handleSubmit}>
                           Login
                       </button>
@@ -116,11 +117,12 @@ class Login extends React.Component {
               </div>
               <div className="row Form-Margin">
                   <div className="col-xs-6 col-xs-offset-3">
-                      <h2> {this.state.error 
+                      <h2> {this.state.error
                         && <Error error={this.state.error}/>}</h2>
                   </div>
               </div>
           </form>
+          <Route path='/register' component={Register} />
       </div>;
   }
 }
@@ -131,7 +133,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default Login = connect(() => {return {}}, mapDispatchToProps)(Login);
+export { UnwrappedLogin };
 
-
-
+export default connect(() => {return {}}, mapDispatchToProps)(UnwrappedLogin);

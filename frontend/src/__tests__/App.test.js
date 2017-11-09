@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
@@ -22,16 +23,16 @@ describe('App', () => {
 
   it('renders Nav Items with correct text', () => {
     const navItems = shallowApp.find('NavItem');
-    expect(navItems.length).toBe(4);
+    expect(navItems.length).toBe(5);
     // Not sure if tests of this type are valuable.
     expect(shallowApp.contains(<NavItem eventKey={1}> Home </NavItem>)).toBe(true);
   });
   // Trying out a snapshot test
-  it.skip('matches a snapshot', () => { //failed and not debugging yet
+  it('matches a snapshot', () => { //failed and not debugging yet
     // eslint-disable-next-line
     const tree = renderer.create(
       <Provider store={mockStore}>
-        <App />
+        <MemoryRouter><App /></MemoryRouter>
       </Provider>).toJSON();
     expect(tree).toMatchSnapshot();
   });

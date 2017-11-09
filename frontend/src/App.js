@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import {LinkContainer, IndexLinkContainer} from 'react-router-bootstrap';
 import {Nav, NavItem} from 'react-bootstrap';
 import HomePage from './containers/HomePage';
@@ -11,7 +11,6 @@ import './styles/App.css';
 
 const App = () => {
     return (
-        <Router>
             <div className="root">
                 <Nav bsStyle="pills">
                     <IndexLinkContainer to="/">
@@ -37,7 +36,6 @@ const App = () => {
                 <Route path="/register" component={Register}/>
                 <Route path="/login" component={Login}/>
             </div>
-        </Router>
     );
 };
 export default App;
