@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register matches a Register snapshot 1`] = `
+<div
+  class="registration"
+>
+  <form
+    class="registration-form"
+    onSubmit={[Function]}
+  >
+    <label>
+      Name
+    </label>
+    <div
+      class="name-container inner-registration"
+    >
+      <input
+        name="firstName"
+        onChange={[Function]}
+        placeholder="First"
+        size="18"
+        value=""
+      />
+      <input
+        name="lastName"
+        onChange={[Function]}
+        placeholder="Last"
+        size="18"
+        value=""
+      />
+    </div>
+    <label>
+      Birthday
+    </label>
+    <div
+      class="birthday-container inner-registration"
+    >
+      <select
+        name="month"
+        onChange={[Function]}
+        value="January"
+      >
+        <option
+          select="January"
+        >
+          January
+        </option>
+        <option
+          select="February"
+        >
+          February
+        </option>
+        <option
+          select="March"
+        >
+          March
+        </option>
+        <option
+          select="April"
+        >
+          April
+        </option>
+        <option
+          select="May"
+        >
+          May
+        </option>
+        <option
+          select="June"
+        >
+          June
+        </option>
+        <option
+          select="July"
+        >
+          July
+        </option>
+        <option
+          select="August"
+        >
+          August
+        </option>
+        <option
+          select="September"
+        >
+          September
+        </option>
+        <option
+          select="October"
+        >
+          October
+        </option>
+        <option
+          select="November"
+        >
+          November
+        </option>
+        <option
+          select="December"
+        >
+          December
+        </option>
+      </select>
+      <input
+        name="day"
+        onChange={[Function]}
+        placeholder="Day"
+        size="8"
+        value=""
+      />
+      <input
+        name="year"
+        onChange={[Function]}
+        placeholder="Year"
+        size="16"
+        value=""
+      />
+    </div>
+    <label>
+      Email
+    </label>
+    <div
+      class="email-container inner-registration"
+    >
+      <input
+        name="email"
+        onChange={[Function]}
+        placeholder="Email"
+        size="24"
+        type="email"
+        value=""
+      />
+    </div>
+    <label>
+      Password
+    </label>
+    <div
+      class="password-container inner-registration"
+    >
+      <input
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        size="24"
+        type="password"
+        value=""
+      />
+    </div>
+    <label>
+      Confirm Password
+    </label>
+    <div
+      class="confirm-pw-container inner-registration"
+    >
+      <input
+        name="passwordConfirm"
+        onChange={[Function]}
+        placeholder="Confirm Password"
+        size="24"
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      class="inner-registration register-button"
+      size="3"
+      type="submit"
+    >
+      Register
+    </button>
+    
+  </form>
+</div>
+`;
