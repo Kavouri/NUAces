@@ -167,7 +167,7 @@ CREATE TABLE `users` (
   `name` varchar(256) NOT NULL,
   `birthday` date NOT NULL,
   `email` varchar(512) NOT NULL,
-  `password` varchar(256) NOT NULL,
+  `password` varchar(512) NOT NULL,
   `salt` varchar(10) NOT NULL,
   `isAdmin` bit NOT NULL,
   `confirmed` bit NOT NULL,
