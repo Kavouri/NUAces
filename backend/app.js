@@ -13,7 +13,10 @@ var sha256 = require('sha256');
 var expressSession = require('express-session');
 var db = require('./db');
 
-//Routes
+// Middleware
+var { ensureAuthenticated, ensureAdmin } = require('./middleware').auth;
+
+// Routes
 var index = require('./routes/index');
 var users = require('./routes/users');
 var events = require('./routes/events');
@@ -42,11 +45,11 @@ app.use(function(req, res, next) {
 
 
 // Linking routes to route handlers
-app.use('/', index);
-app.use('/user', users);
-app.use('/event', events);
+app.use('/user', users, ensureAuthenticated);
+app.use('/event', events, ensureAuthenticated);
 app.use('/partner', partners);
 app.use('/login', auth);
+app.use('/', index, ensureAuthenticated);
 
 passport.use(new Strategy(
   { usernameField: 'email' },
