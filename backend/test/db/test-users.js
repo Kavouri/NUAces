@@ -5,7 +5,7 @@ var expect = chai.expect;
 var sinon = require('sinon');
 var proxyquire = require('proxyquire');
 var mysql = require('mysql');
-var sha256 = require('sha256');
+var pbkdf2 = require('pbkdf2');
 
 // stub mysql require
 var mysqlStub = sinon.stub(mysql, 'createConnection').returns({
@@ -61,7 +61,7 @@ describe('Test User class and helper functions', function() {
   });
 
   it.skip('should return an insert query based off the object fields', function(done) { //Skipping to get passing
-    var hashedPassword = sha256(user.password + 'foo');
+    var hashedPassword = pbkdf2.pbkdf2Sync(user.password, 'foo', 100000, 256, 'sha256').toString('hex');
     var insertQuery = `INSERT INTO users 
       (name, email, birthday, password, salt, isAdmin, confirmed)
       VALUES ('${user.name}', '${user.email}', '${user.birthday}',
@@ -72,13 +72,13 @@ describe('Test User class and helper functions', function() {
 
   it('should return true if the query result password matches the users hashed password', function(done) {
     var err = 'invalid password';
-    var func = () => user.hashAndCompare([{password: 'bad value'}]);
+    var func = () => user.hashAndCompare([{password: 'bad value', salt: ''}]);
     expect(func).to.throw(err);
     done();
   });
 
   it('should return true if the query result password matches the users hashed password', function(done) {
-    var row = {password: sha256('password' + 'foo'), salt: 'foo'};
+    var row = {password: pbkdf2.pbkdf2Sync('password', 'foo', 10000, 256, 'sha256').toString('hex'), salt: 'foo'};
     var func = () => user.hashAndCompare([row]);
     expect(func).not.to.throw();
     done();

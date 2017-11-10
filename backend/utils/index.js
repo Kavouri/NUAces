@@ -1,5 +1,7 @@
-var sha256 = require('sha256');
+var pbkdf2 = require('pbkdf2');
 var salter = require('crypto-random-string');
+
+var ITERATION_COUNT = 10000;
 
 exports.validatePassword = function(password) {
   var regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
@@ -12,7 +14,8 @@ exports.validateEmail = function(email) {
 }
 
 exports.hashPassword = function(plainText, salt) {
-  return sha256(plainText + salt);
+  var derivedKey = pbkdf2.pbkdf2Sync(plainText, new Buffer(salt), ITERATION_COUNT, 256, 'sha256').toString('hex');
+  return derivedKey;
 }
 
 exports.generateSalt = function(plainText) {
