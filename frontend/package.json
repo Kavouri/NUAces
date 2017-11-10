@@ -29,7 +29,7 @@
     "pretty": "./node_modules/.bin/prettier --write ./src/*.js",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "test": "react-scripts test --env=jsdom",
-    "test-ci": "CI=true npm test",
+    "test-ci": "CI=true npm test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/registerServiceWorker.js --collectCoverageFrom=!src/index.js",
     "eject": "react-scripts eject"
   },
   "devDependencies": {

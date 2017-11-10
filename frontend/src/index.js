@@ -17,11 +17,11 @@ const store = createStore(reducers, applyMiddleware(thunk));
 store.dispatch(fetchPartners());
 
 ReactDOM.render(
-  (<Router>
-  <Provider store={store}>
+  <Router>
+    <Provider store={store}>
       <App />
-  </Provider>
-  </Router>),
+    </Provider>
+  </Router>,
   document.getElementById('root')
 );
 registerServiceWorker();

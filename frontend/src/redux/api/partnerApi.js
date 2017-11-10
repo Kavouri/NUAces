@@ -1,8 +1,8 @@
-import requestWrapper from '../../lib/requestWrapper';
+import { request } from '../../lib/requestWrapper';
 
-const getPartners = () => requestWrapper('/partner', 'get');
+const getPartners = () => request('/partner', 'get');
 
-const addPartner = data => requestWrapper('/partner', 'post', data);
+const addPartner = data => request('/partner', 'post', data);
 
 const partnerApi = { addPartner, getPartners };
 

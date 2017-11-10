@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import request from '../lib/requestWrapper';
+import { request } from '../lib/requestWrapper';
 import { successfulLogin } from '../redux/actions/actions';
 import Error from './registration/Error';
 import Register from './Register';
@@ -50,18 +50,11 @@ class UnwrappedLogin extends React.Component {
         password: this.state.password
       };
 
-      let baseUrl = process.env.REACT_APP_BASE_URL + "/login";
-      const options = {
-        url: baseUrl,
-        form: loginForm
-      };
-
-      console.log(request);
       request('/login', 'POST', loginForm)
         .then((res) => {
           if (res.status === 200) {
             this.props.successfulLogin(res);
-            this.props.history.push('/');
+            // this.props.history.push('/');
           }
         })
         .catch((error) => {
@@ -127,7 +120,7 @@ class UnwrappedLogin extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     successfulLogin: (resp) => { dispatch(successfulLogin(resp)) }
   };

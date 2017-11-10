@@ -2,17 +2,17 @@
 
 exports[`Register matches a Register snapshot 1`] = `
 <div
-  class="registration"
+  className="registration"
 >
   <form
-    class="registration-form"
+    className="registration-form"
     onSubmit={[Function]}
   >
     <label>
       Name
     </label>
     <div
-      class="name-container inner-registration"
+      className="name-container inner-registration"
     >
       <input
         name="firstName"
@@ -33,7 +33,7 @@ exports[`Register matches a Register snapshot 1`] = `
       Birthday
     </label>
     <div
-      class="birthday-container inner-registration"
+      className="birthday-container inner-registration"
     >
       <select
         name="month"
@@ -120,7 +120,7 @@ exports[`Register matches a Register snapshot 1`] = `
       Email
     </label>
     <div
-      class="email-container inner-registration"
+      className="email-container inner-registration"
     >
       <input
         name="email"
@@ -135,7 +135,7 @@ exports[`Register matches a Register snapshot 1`] = `
       Password
     </label>
     <div
-      class="password-container inner-registration"
+      className="password-container inner-registration"
     >
       <input
         name="password"
@@ -150,7 +150,7 @@ exports[`Register matches a Register snapshot 1`] = `
       Confirm Password
     </label>
     <div
-      class="confirm-pw-container inner-registration"
+      className="confirm-pw-container inner-registration"
     >
       <input
         name="passwordConfirm"
@@ -162,7 +162,7 @@ exports[`Register matches a Register snapshot 1`] = `
       />
     </div>
     <button
-      class="inner-registration register-button"
+      className="inner-registration register-button"
       size="3"
       type="submit"
     >

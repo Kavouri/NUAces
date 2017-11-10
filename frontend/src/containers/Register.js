@@ -1,5 +1,5 @@
 import React from 'react';
-import request from '../lib/requestWrapper';
+import { request } from '../lib/requestWrapper';
 import _ from 'lodash';
 
 import Name from './registration/Name';
@@ -42,16 +42,17 @@ export default class Register extends React.Component {
     });
 
     if (!error) {
+
       if (this.state.day.concat(this.state.year).match(/[a-z]/i)) {
         error = 'DD-YYYY contains alphabetic characters.';
       }
-      if (this.state.day.length > 2 || this.state.year.length !== 4) {
+      else if (this.state.day.length > 2 || this.state.year.length !== 4) {
         error = 'DD-YYYY has an invalid number of characters.';
       }
-      if (this.state.password !== this.state.passwordConfirm) {
+      else if (this.state.password !== this.state.passwordConfirm) {
         error = 'Passwords don\'t match';
       }
-      if (this.state.email.indexOf('@') < 0) {
+      else if (this.state.email.indexOf('@') < 0) {
         error = 'Email is not valid.';
       }
     }
@@ -76,8 +77,8 @@ export default class Register extends React.Component {
 
       request('/user', 'POST', registrationForm)
         .then((res) => {
-          if (res.status == 200) {
-            this.props.history.push('/');
+          if (res.status === 200) {
+            // We need to implement this.
           } else {
             this.setState({ error: res.body });
           }

@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { combineReducers } from 'redux';
 import { SUCCESSFUL_LOGIN, ADD_EVENT, REGISTER_FOR_EVENT } from '../actions/actions';
 import { REQUEST_PARTNERS, RECEIVE_PARTNERS } from '../actions/partnerActions';
@@ -27,15 +26,17 @@ export function events(state = {}, action) {
     case ADD_EVENT:
       return {
         ...state,
-        [action.eventData.name]: action.eventData,
+        [action.eventData.eventId]: action.eventData,
       };
     case REGISTER_FOR_EVENT:
-      return _.map(state, (event) => {
-        if (event.id === action.eventId) {
-          return Object.assign({}, event, { attending: true });
+      return {
+        ...state,
+        [action.eventData.eventId]:
+        {
+          ...action.eventData,
+          attending: true
         }
-        return event;
-      });
+      };
     default:
       return state;
   }
