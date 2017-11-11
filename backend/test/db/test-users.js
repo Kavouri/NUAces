@@ -7,34 +7,39 @@ var proxyquire = require('proxyquire');
 var mysql = require('mysql');
 var pbkdf2 = require('pbkdf2');
 
-// stub mysql require
-var mysqlStub = sinon.stub(mysql, 'createConnection').returns({
-  connect: function() { },
-  query: function(query, cb) { }
-});
-
-// require our datbaase connection using stubbed mysql
-var connect = proxyquire('../../db/connect', {
-  mysql: mysqlStub
-});
-
-// stub query function 
-var queryStub = sinon.stub(connect);
-
-var { User, findByEmail, toUser } = proxyquire('../../db/users', {
-  '../../db/connect': queryStub
-});
-
 chai.use(chaiHttp);
 
 describe('Test User class and helper functions', function() {
-  var user;
+  var sandbox = sinon.sandbox.create();
+  var queryStub, user, User, findByEmail, toUser;
   beforeEach(function() {
+    // stub mysql require
+    var mysqlStub = sandbox.stub(mysql, 'createConnection').returns({
+      connect: function() { },
+      query: function(query, cb) { }
+    });
+
+    // require our datbaase connection using stubbed mysql
+    var connect = proxyquire('../../db/connect', {
+      mysql: mysqlStub
+    });
+
+    queryStub = sandbox.stub(connect);
+    console.log(queryStub.query);
+
+    var users = proxyquire('../../db/users', {
+      './connect': queryStub
+    });
+    User = users.User;
+    findByEmail = users.findByEmail;
+    toUser = users.toUser;
+
     user = new User('email', 'password', 'name', '1/1/2000', 'foo', 0);
-    queryStub.query.reset();
   });
 
-  after(function() { queryStub.query.reset() });
+  afterEach(function() { 
+    sandbox.restore();  
+  });
 
   it('should have all the correct fields when an object is created', function(done) {
     expect(user.email).be.equal('email'); 
@@ -111,30 +116,25 @@ describe('Test User class and helper functions', function() {
     expect(user.verifyUserDoesNotExist([])).to.be.equal(true);
     done();
   });
-});
 
-describe('Test find by email', function() {
-  it('should call the query function with an insert query', function(done) {
-    var selectQuery = 'SELECT * FROM users WHERE email="alex"';
-    findByEmail("alex");
-    sinon.assert.calledOnce(queryStub.query);
-    queryStub.query.calledWith(selectQuery); 
-    done();
+  describe('Test find by email', function() {
+    it('should call the query function with an insert query', function(done) {
+      var selectQuery = 'SELECT * FROM users WHERE email="alex"';
+      findByEmail("alex");
+      sinon.assert.calledOnce(queryStub.query);
+      queryStub.query.calledWith(selectQuery); 
+      done();
+    });
   });
 
-  after(function() {
-    queryStub.query.reset();
+  describe('Test toUser helper function', function() {
+    it('should return a user object created from the provided query result', function(done) {
+      var user = toUser([{email: "foo", password: "bar"}]);
+      expect(user).to.be.a('object');
+      expect(user.email).to.be.equal('foo');
+      expect(user.password).to.equal('bar');
+      done();
+    });
   });
 });
-
-describe('Test toUser helper function', function() {
-  it('should return a user object created from the provided query result', function(done) {
-    var user = toUser([{email: "foo", password: "bar"}]);
-    expect(user).to.be.a('object');
-    expect(user.email).to.be.equal('foo');
-    expect(user.password).to.equal('bar');
-    done();
-  });
-});
-
 
