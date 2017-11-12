@@ -20,14 +20,16 @@ class Student {
   }
 
   validateFields() {
-    // lets assert that user is not associated with a student or admin acc
-    // TODO
+    if (typeof this.user != 'object') throw new Error('expected user object');
+    if (!this.address || !this.college) {
+      throw new Error('expected valid address and college');
+    }
     return true;
   }
 
   getInsertQuery() {
     return `INSERT INTO students (userId, address, college) VALUES
-      ('${this.user.id}', '${this.address}', '${this.college}')`;
+      (${this.user.id}, '${this.address}', '${this.college}')`;
   }
 
   toPublicResponse() {

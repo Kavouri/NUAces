@@ -46,10 +46,10 @@ app.use(function(req, res, next) {
 
 // Linking routes to route handlers
 app.use('/user', users, ensureAuthenticated);
-app.use('/event', events, ensureAuthenticated);
+app.use('/event', events);
 app.use('/partner', partners);
 app.use('/login', auth);
-app.use('/', index, ensureAuthenticated);
+app.use('/', index);
 
 passport.use(new Strategy(
   { usernameField: 'email' },
@@ -79,14 +79,14 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-app.use(function(err, req, res, next) {
+/*app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page
   res.status(err.status || 500);
   res.send(res.locals.error);
-});
+});*/
 
 app.get('*', function(req, res) { res.send('Unimplemented Endpoint') });
 module.exports = app;
