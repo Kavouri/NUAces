@@ -49,12 +49,12 @@ class UnwrappedLogin extends React.Component {
         email: this.state.email,
         password: this.state.password
       };
+
       request('/login', 'POST', loginForm)
         .then((res) => {
             this.props.successfulLogin(res);
             this.props.history.push('/');
-          }
-        })
+          })
         .catch((error) => {
           this.setState({ error: error.error });
         });

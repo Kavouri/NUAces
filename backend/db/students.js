@@ -22,7 +22,8 @@ class Student {
   validateFields() {
     if (typeof this.user != 'object') throw new Error('expected user object');
     if (!this.address || !this.college) {
-      throw new Error('expected valid address and college');
+      // TODO add address and college to reg form
+      // throw new Error('expected valid address and college');
     }
     return true;
   }
