@@ -25,7 +25,6 @@ describe('Test User class and helper functions', function() {
     });
 
     queryStub = sandbox.stub(connect);
-    console.log(queryStub.query);
 
     var users = proxyquire('../../db/users', {
       './connect': queryStub

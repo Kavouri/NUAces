@@ -47,4 +47,20 @@ describe('test Student methods', function() {
     expect(student.user).to.equal(user);
     done();
   });
+
+  it('should return an insert query when getInsertQuery is called', function(done) {
+    var query = `INSERT INTO students (userId, address, college) VALUES
+      (0, '${student.address}', '${student.college}')`;
+
+    expect(student.getInsertQuery()).to.equal(query);
+    done();
+  });
+
+  it('should throw an error when validateFields is called on a bogus student object', function(done) {
+    var bogusStudent1 = new Student(undefined, '', '');
+    expect(bogusStudent1.validateFields).to.throw('expected user object');
+    var bogusStudent2 = new Student({'user': 'user'} , undefined, undefined);
+    expect(bogusStudent2.validateFields).to.throw('expected valid address and college');
+    done();
+  });
 });
