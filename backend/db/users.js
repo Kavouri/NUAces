@@ -1,6 +1,5 @@
 var utils = require('../utils');
 var query = require('./connect').query;
-var sha256 = require('sha256');
 
 class User {
 
@@ -44,7 +43,6 @@ class User {
   getInsertQuery() {
     var salt = this.salt || utils.generateSalt();
     var hashedPassword = utils.hashPassword(this.password, salt);
-    console.log(this.birthday);
     var insertQuery = `INSERT INTO users 
       (name, email, birthday, password, salt, isAdmin, confirmed) 
       VALUES ('${this.name}', '${this.email}', '${this.birthday}', 
@@ -55,7 +53,7 @@ class User {
   hashAndCompare(rows) { 
     var hashedPassword = rows[0].password;
     var salt = rows[0].salt;
-    if (sha256(this.password + salt) != hashedPassword) {
+    if (utils.hashPassword(this.password, salt) != hashedPassword) {
       throw new Error('invalid password');
     }
     return rows;

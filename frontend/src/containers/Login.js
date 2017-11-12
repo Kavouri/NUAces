@@ -52,11 +52,9 @@ class UnwrappedLogin extends React.Component {
 
       request('/login', 'POST', loginForm)
         .then((res) => {
-          if (res.status === 200) {
             this.props.successfulLogin(res);
-            // this.props.history.push('/');
-          }
-        })
+            this.props.history.push('/');
+          })
         .catch((error) => {
           this.setState({ error: error.error });
         });

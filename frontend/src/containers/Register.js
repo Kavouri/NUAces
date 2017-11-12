@@ -77,11 +77,7 @@ export default class Register extends React.Component {
 
       request('/user', 'POST', registrationForm)
         .then((res) => {
-          if (res.status === 200) {
-            // We need to implement this.
-          } else {
-            this.setState({ error: res.body });
-          }
+            this.props.history.push('/');
         })
         .catch((error) => {
           this.setState({ error: error.error });
